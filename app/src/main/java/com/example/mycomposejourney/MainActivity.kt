@@ -1,12 +1,14 @@
 package com.example.mycomposejourney
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +20,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -25,9 +28,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val painter = painterResource(id = R.drawable.pasta)
+            val painter1 = painterResource(id = R.drawable.pasta)
+            val painter2 = painterResource(id = R.drawable.happy_meal_small)
             val description = "Italian pasta"
-            val title = "Respondo Pasta"
+            val title1 = "Respondo Pasta"
+            val title2 = "Happy Meal"
             val price = "$5"
 
             Box(
@@ -35,7 +40,32 @@ class MainActivity : ComponentActivity() {
                     .fillMaxSize()
                     .padding(16.dp)
             ) {
-                ImageCard(painter, title, price, description)
+                Column {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text("Compose Recipe", style = TextStyle(fontSize = 20.sp, fontFamily = FontFamily.Monospace))
+                    }
+                    Spacer(modifier = Modifier.height(30.dp))
+                    ImageCard(painter1, title1, price, description)
+                    Spacer(modifier = Modifier.height(20.dp))
+                    ImageCard(painter2, title2, price, description)
+                    Spacer(modifier = Modifier.height(50.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Button(
+                            onClick = {
+                                Toast.makeText(this@MainActivity, "", Toast.LENGTH_SHORT).show()
+                            },
+                            modifier = Modifier.height(50.dp)
+                        ) {
+                            Text("More Meals 😋")
+                        }
+                    }
+                }
             }
         }
     }
