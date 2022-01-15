@@ -4,66 +4,41 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column(
-                modifier = Modifier
-                    .background(Color.DarkGray)
-                    .fillMaxSize(0.4f),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+            Column(modifier = Modifier
+                .background(Color(0xFFF2F2F2))
+                .fillMaxWidth()
+                .fillMaxHeight(.5f)
+                .border(5.dp, Color.Magenta)
+                .padding(20.dp)
+                .border(1.dp, Color.Red)
+                .padding(20.dp)
+                .border(10.dp, Color.Blue)
+                .padding(20.dp)
+                .border(2.dp, Color.Yellow)
+                .padding(30.dp)
+
             ) {
-                Text(
-                    text = "Victor",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 16.sp
-                    )
-                )
-                Text(
-                    text = "Loveday",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 20.sp
-                    )
-                )
+                Text("Bye Bye XML", modifier = Modifier
+                    .offset(150.dp, 19.dp))
+                Spacer(modifier = Modifier.height(50.dp))
+                Text("Hey, Compose 🥰")
+                Button(onClick = {  }, modifier = Modifier.offset(0.dp, 20.dp)) {
+                    Text("Sweet Alert")
+                }
             }
 
-            Spacer(modifier = Modifier.padding(10.dp))
-
-            Row(
-                modifier = Modifier
-                    .background(Color.DarkGray)
-                    .fillMaxSize(0.4f),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = "Android",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 16.sp
-                    )
-                )
-                Text(
-                    text = "Developer",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontSize = 20.sp
-                    )
-                )
-            }
 
         }
     }
