@@ -4,4 +4,5 @@ Just playing around Compose 😎
 # Modifiers
 
 
-![Screenshot_1642241092](https://user-images.githubusercontent.com/56683410/149617995-d470e03d-afef-4cf2-a452-a39fc6b00bab.png)
+![Screenshot_1642241092](https://user-images.githubusercontent.com/56683410/149618075-19c7eb10-9556-4f80-b375-85e705471982.png)
+
