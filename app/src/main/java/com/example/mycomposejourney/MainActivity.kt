@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -18,27 +19,46 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            Column(modifier = Modifier.fillMaxSize()) {
+                val color = remember {
+                    mutableStateOf(Color.Yellow)
+                }
+                ColorChangerBox(
+                    Modifier
+                        .fillMaxSize()
+                        .weight(1f)
+                ) {
+                    color.value = it
+                }
 
-            ColorChangerBox(Modifier.fillMaxSize())
+                Box(
+                    modifier = Modifier
+                        .background(color.value)
+                        .fillMaxSize()
+                        .weight(1f)
+                ) {
+
+                }
+            }
         }
     }
 }
 
 
 @Composable
-fun ColorChangerBox(modifier: Modifier = Modifier) {
-    val color = remember {
-        mutableStateOf(Color.Yellow)
-    }
+fun ColorChangerBox(modifier: Modifier = Modifier, updateColor: (Color) -> Unit) {
 
-    Box(modifier
-        .background(color.value)
-        .clickable {
-                color.value = Color(
-                    Random.nextFloat(),
-                    Random.nextFloat(),
-                    Random.nextFloat(),
-                    1f
+    Box(
+        modifier
+            .background(Color.Blue)
+            .clickable {
+                updateColor(
+                    Color(
+                        Random.nextFloat(),
+                        Random.nextFloat(),
+                        Random.nextFloat(),
+                        1f
+                    )
                 )
             }) {
 
