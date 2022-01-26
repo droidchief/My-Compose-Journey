@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
@@ -20,11 +21,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val verticalScrollState = rememberScrollState()
-            Column(modifier = Modifier.verticalScroll(verticalScrollState)) {
-                for (i in 1..35) {
+            LazyColumn {
+                items(200) {
                     Text(
-                        text = "Android $i",
+                        text = "Android $it",
                         fontSize = 26.sp,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
